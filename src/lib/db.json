@@ -1,0 +1,32 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "created": "2023-01-19T19:06:39.653Z",
+      "name": "Example text room",
+      "type": "text",
+      "content": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "id": 2,
+      "created": "2023-01-19T19:06:39.653Z",
+      "name": "Example image room",
+      "type": "image",
+      "content": "/example-room.jpg"
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "name": "Sala 1",
+      "content": "Sala 1",
+      "created": "2023-01-19T19:17:29.144Z"
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "name": "sala 2",
+      "content": "caca frita",
+      "created": "2023-01-19T19:24:00.722Z"
+    }
+  ]
+}

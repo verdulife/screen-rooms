@@ -1,3 +1,11 @@
+<script>
+	import { Rooms } from '$lib/stores';
+
+	export let data;
+	const { rooms } = data;
+	$Rooms = rooms;
+</script>
+
 <main class="viewport">
 	<slot />
 </main>

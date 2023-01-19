@@ -5,7 +5,7 @@
 
 <div class="scroll">
 	<section class="col fill">
-		<ul class="row xfill">
+		<ul class="row jcenter xfill">
 			{#each $Rooms as room}
 				<li>
 					<RoomCard {room} />

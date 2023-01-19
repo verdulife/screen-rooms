@@ -1,7 +1,7 @@
 <script>
-	import { Rooms } from '$lib/stores';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { Rooms } from '$lib/stores';
 
 	let files;
 	let room = {
@@ -21,21 +21,36 @@
 		};
 	}
 
-	function addRoom() {
-		room.created = new Date();
-		$Rooms = [...$Rooms, room];
-		room = {};
-
+	function goHome() {
 		goto('/');
 	}
 
-	function cancel() {
-		goto('/');
+	async function addRoom() {
+		room.created = new Date();
+
+		const res = await fetch('/edit-room', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(room)
+		});
+
+		const json = await res.json();
+
+		if (json) {
+			$Rooms = [...$Rooms, json.room];
+			goHome();
+		}
 	}
 
 	function deleteRoom() {
-		const rooms = $Rooms.filter((r) => r.id != id);
-		console.log(rooms);
+		/* const check = confirm('⚠ ¿Deseas borrar la habitación?');
+
+		if (!check) return;
+
+		$Rooms = $Rooms.filter((r) => r.id != id);
+		goHome(); */
 	}
 
 	$: if (files) processImage();
@@ -100,11 +115,14 @@
 		{/if}
 
 		<footer class="row xfill">
-			<button class="accent round">Crear habitación</button>
-			<button type="button" class="accent outline round" on:click={cancel}>Cancelar</button>
-			<button type="button" class="delete-btn alt round" on:click={deleteRoom}
-				>Borrar habitación</button
-			>
+			<button class="accent round">Guardar cambios</button>
+			<button type="button" class="accent outline round" on:click={goHome}>Cancelar</button>
+
+			{#if id}
+				<button type="button" class="delete-btn alt round" on:click={deleteRoom}>
+					Borrar habitación
+				</button>
+			{/if}
 		</footer>
 	</form>
 </section>
