@@ -6,21 +6,27 @@
 	const { id, type, content, name, created } = room;
 </script>
 
-<article id="{name}-{id}">
-	<section class="col fcenter xfill">
-		{#if type === 'text'}
-			<h1 class="tcenter">{content}</h1>
-		{:else}
-			<Image width="100%" height="100%" src={content} alt={name} />
-		{/if}
-	</section>
-	<footer class="col jcenter xfill">
-		<h3 class="clamp">#{id} - {name}</h3>
-		<small class="clamp">{formatDate(created)}</small>
-	</footer>
-</article>
+<a href="/edit-room{id}">
+	<article id="{name}-{id}">
+		<section class="col fcenter xfill">
+			{#if type === 'text'}
+				<h1 class="tcenter">{content}</h1>
+			{:else}
+				<Image width="100%" height="100%" src={content} alt={name} />
+			{/if}
+		</section>
+		<footer class="col jcenter xfill">
+			<h3 class="clamp">#{id} - {name}</h3>
+			<small class="clamp">{formatDate(created)}</small>
+		</footer>
+	</article>
+</a>
 
 <style lang="postcss">
+	a {
+		color: var(--c-neutral-900);
+	}
+
 	article {
 		--footer-h: 80px;
 

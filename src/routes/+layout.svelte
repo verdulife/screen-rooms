@@ -1,4 +1,4 @@
-<main class="scroll">
+<main class="viewport">
 	<slot />
 </main>
 

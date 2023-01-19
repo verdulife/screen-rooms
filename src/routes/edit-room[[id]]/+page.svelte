@@ -1,11 +1,15 @@
 <script>
 	import { Rooms } from '$lib/stores';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	let files;
 	let room = {
 		id: $Rooms.length + 1
 	};
+
+	const { id } = $page.params;
+	if (id) room = $Rooms.find((r) => r.id == id);
 
 	function processImage() {
 		let [file] = files;
@@ -23,6 +27,15 @@
 		room = {};
 
 		goto('/');
+	}
+
+	function cancel() {
+		goto('/');
+	}
+
+	function deleteRoom() {
+		const rooms = $Rooms.filter((r) => r.id != id);
+		console.log(rooms);
 	}
 
 	$: if (files) processImage();
@@ -86,7 +99,13 @@
 			</div>
 		{/if}
 
-		<button class="accent round">Crear habitación</button>
+		<footer class="row xfill">
+			<button class="accent round">Crear habitación</button>
+			<button type="button" class="accent outline round" on:click={cancel}>Cancelar</button>
+			<button type="button" class="delete-btn alt round" on:click={deleteRoom}
+				>Borrar habitación</button
+			>
+		</footer>
 	</form>
 </section>
 
@@ -100,5 +119,13 @@
 		gap: 2em;
 		background-color: var(--c-neutral-200);
 		padding: 2em;
+	}
+
+	footer {
+		gap: 1em;
+	}
+
+	.delete-btn {
+		margin-left: auto;
 	}
 </style>

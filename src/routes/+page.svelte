@@ -3,23 +3,25 @@
 	import RoomCard from '../lib/components/RoomCard.svelte';
 </script>
 
-<section class="col fill">
-	<ul class="row xfill">
-		{#each $Rooms as room}
+<div class="scroll">
+	<section class="col fill">
+		<ul class="row xfill">
+			{#each $Rooms as room}
+				<li>
+					<RoomCard {room} />
+				</li>
+			{/each}
 			<li>
-				<RoomCard {room} />
+				<a href="/edit-room">
+					<article class="col fcenter">
+						<h1><b>+</b></h1>
+						<h4>Añadir habitación</h4>
+					</article>
+				</a>
 			</li>
-		{/each}
-		<li>
-			<a href="/edit-room">
-				<article class="col fcenter">
-					<h1><b>+</b></h1>
-					<h4>Añadir habitación</h4>
-				</article>
-			</a>
-		</li>
-	</ul>
-</section>
+		</ul>
+	</section>
+</div>
 
 <style lang="postcss">
 	section {
