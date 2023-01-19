@@ -25,32 +25,42 @@
 		goto('/');
 	}
 
-	async function addRoom() {
-		room.created = new Date();
+	function contentIsImage() {
+		const { content } = room;
+		return !content.includes('.jpg') && !content.includes('base64');
+	}
 
+	async function uploadRoom() {
 		const res = await fetch('/edit-room', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(room)
+			body: JSON.stringify($Rooms)
 		});
 
-		const json = await res.json();
-
-		if (json) {
-			$Rooms = [...$Rooms, json.room];
-			goHome();
-		}
+		return await res.json();
 	}
 
-	function deleteRoom() {
-		/* const check = confirm('⚠ ¿Deseas borrar la habitación?');
+	async function addRoom() {
+		if (!id) room.created = new Date();
 
+		const rooms = $Rooms.filter((r) => r.id != room.id);
+		$Rooms = [...rooms, room].sort((a, b) => a.id - b.id);
+		const { done } = await uploadRoom();
+
+		if (done) goHome();
+		else alert('Algo ha salido mal. Vuelve a intentarlo');
+	}
+
+	async function deleteRoom() {
+		const check = confirm('⚠ ¿Deseas borrar la habitación?');
 		if (!check) return;
 
 		$Rooms = $Rooms.filter((r) => r.id != id);
-		goHome(); */
+		const { done } = await uploadRoom();
+
+		if (done) goHome();
 	}
 
 	$: if (files) processImage();
@@ -110,7 +120,7 @@
 		{#if room.type === 'image'}
 			<div class="input-wrapper col xfill">
 				<label for="file">Nombre</label>
-				<input type="file" accept="image/jpeg" id="file" bind:files required />
+				<input type="file" accept="image/jpeg" id="file" bind:files required={contentIsImage()} />
 			</div>
 		{/if}
 

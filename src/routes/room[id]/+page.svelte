@@ -1,12 +1,10 @@
 <script>
+	import { page } from '$app/stores';
+	import { Rooms } from '$lib/stores';
 	import Image from '$lib/components/Image.svelte';
 
-	export let data;
-	let room;
-
-	$: if (data.room) {
-		room = data.room;
-	}
+	const { id } = $page.params;
+	const room = $Rooms.find((r) => r.id == id);
 </script>
 
 {#if room}
