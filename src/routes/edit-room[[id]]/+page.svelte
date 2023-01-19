@@ -27,6 +27,7 @@
 
 	function contentIsImage() {
 		const { content } = room;
+		if (!content) return;
 		return !content.includes('.jpg') && !content.includes('base64');
 	}
 
@@ -105,10 +106,9 @@
 
 		{#if room.type === 'text'}
 			<div class="input-wrapper col xfill">
-				<label for="content">Nombre</label>
-				<input
+				<label for="content">Contenido</label>
+				<textarea
 					class="underline -900 xfill"
-					type="text"
 					id="content"
 					bind:value={room.content}
 					placeholder=" ej. Sala de conferencias"
@@ -119,7 +119,7 @@
 
 		{#if room.type === 'image'}
 			<div class="input-wrapper col xfill">
-				<label for="file">Nombre</label>
+				<label for="file">Contenido</label>
 				<input type="file" accept="image/jpeg" id="file" bind:files required={contentIsImage()} />
 			</div>
 		{/if}
@@ -145,8 +145,21 @@
 	form {
 		max-width: 900px;
 		gap: 2em;
-		background-color: var(--c-neutral-200);
+		background-color: var(--c-neutral-800);
+		border: 1px solid var(--c-neutral-800);
+		border-radius: 0.5em;
+		box-shadow: 0 20px 20px -20px var(--c-neutral-800);
 		padding: 2em;
+
+		& input,
+		& select,
+		& textarea {
+			color: var(--c-neutral);
+		}
+
+		& option {
+			background-color: var(--c-neutral-800);
+		}
 	}
 
 	footer {

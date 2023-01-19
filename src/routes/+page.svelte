@@ -33,17 +33,17 @@
 	}
 
 	a {
-		color: var(--c-neutral-900);
+		color: var(--c-neutral);
 	}
 
 	article {
 		cursor: pointer;
 		width: 400px;
 		height: 350px;
-		background-color: var(--c-neutral-200);
-		border: 1px solid var(--c-neutral-400);
+		background-color: var(--c-neutral-800);
+		border: 1px solid var(--c-neutral-800);
 		border-radius: 0.5em;
-		box-shadow: 0 20px 20px -20px var(--c-neutral-400);
+		box-shadow: 0 20px 20px -20px var(--c-neutral-800);
 		overflow: hidden;
 		user-select: none;
 	}

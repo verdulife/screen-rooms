@@ -6,8 +6,8 @@
 	const { id, type, content, name, created } = room;
 </script>
 
-<a href="/edit-room{id}">
-	<article id="{name}-{id}">
+<article id="{name}-{id}">
+	<a href="/edit-room{id}">
 		<section class="col fcenter xfill">
 			{#if type === 'text'}
 				<h1 class="tcenter">{content}</h1>
@@ -15,27 +15,33 @@
 				<Image width="100%" height="100%" src={content} alt={name} />
 			{/if}
 		</section>
-		<footer class="col jcenter xfill">
-			<h3 class="clamp">#{id} - {name}</h3>
+	</a>
+
+	<footer class="row acenter xfill">
+		<span>{id}</span>
+
+		<aside class="col">
+			<h3 class="clamp">
+				<a href="/room{id}">{name}</a>
+			</h3>
 			<small class="clamp">{formatDate(created)}</small>
-		</footer>
-	</article>
-</a>
+		</aside>
+	</footer>
+</article>
 
 <style lang="postcss">
 	a {
-		color: var(--c-neutral-900);
+		color: var(--c-neutral);
 	}
 
 	article {
 		--footer-h: 80px;
 
-		cursor: pointer;
 		width: 400px;
 		height: 350px;
-		border: 1px solid var(--c-neutral-400);
+		border: 1px solid var(--c-neutral-800);
 		border-radius: 0.5em;
-		box-shadow: 0 20px 20px -20px var(--c-neutral-400);
+		box-shadow: 0 20px 20px -20px var(--c-neutral-800);
 		overflow: hidden;
 	}
 
@@ -54,11 +60,26 @@
 
 	footer {
 		height: var(--footer-h);
-		padding: 1em;
+		gap: 1em;
+		padding: 0 1em;
+		border-top: 1px solid var(--c-neutral-800);
 		overflow: hidden;
+
+		& span {
+			background-color: var(--c-alt);
+			color: var(--c-neutral);
+			font-size: 26px;
+			border-radius: 0.25em;
+			padding: 0.25em 0.75em;
+		}
 
 		& h3 {
 			font-size: 1.5em;
+		}
+
+		& small {
+			font-size: 14px;
+			color: var(--c-neutral-400);
 		}
 	}
 </style>
