@@ -42,27 +42,35 @@
 		width: 40vmax;
 		max-width: 350px;
 		aspect-ratio: 3/2.5;
+		backdrop-filter: blur(10px);
 		border: 1px solid var(--c-neutral-800);
 		border-radius: 0.25em;
-		box-shadow: 0 0 20px -20px var(--c-neutral-800);
+		box-shadow: 0 1px 6px #000;
 		overflow: hidden;
 		transition: 150ms;
 
 		&:hover {
-			box-shadow: 0 0 50px -20px var(--c-accent-800);
+			box-shadow: 0 1px 6px #000, 0 0 40px -10px var(--c-accent-800);
+		}
+
+		&:active {
+			transform: translateY(1px);
+			border-color: var(--c-accent-900);
+			box-shadow: 0 1px 2px #000, 0 0 40px -10px var(--c-accent-800);
 		}
 	}
 
 	section {
 		height: calc(100% - var(--footer-h));
-		background-color: var(--c-neutral-900);
 		overflow: hidden;
 		user-select: none;
 
 		& h1 {
 			color: var(--c-neutral);
-			font-size: 50px;
+			font-family: var(--f-text);
+			font-size: clamp(20px, 5vw, 40px);
 			line-height: 1;
+			text-shadow: 0 0 10px var(--c-neutral-700);
 		}
 
 		& picture {

@@ -16,7 +16,7 @@
   --s-accent: 84%;
   --l-accent: 63%;
   --a-accent: var(--h-accent), var(--s-accent), var(--l-accent);
-  --text-accent: var(--c-neutral);
+  --text-accent: var(--c-neutral-900);
 
   /* Alternative color - Plein Air */
   --value-alt: hsl(211, 25%, 82%);
@@ -69,7 +69,7 @@
 
   /* Selection colors */
   --c-selection-bg: var(--c-accent);
-  --c-selection-color: var(--c-neutral);
+  --c-selection-color: var(--text-accent);
 
   /* Input elements color */
   --c-input-placeholder: var(--c-neutral-700);

@@ -1,6 +1,6 @@
 <script>
 	import { Rooms } from '$lib/stores';
-	import RoomCard from '../lib/components/RoomCard.svelte';
+	import RoomCard from '$lib/components/RoomCard.svelte';
 </script>
 
 <div class="scroll">
