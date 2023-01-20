@@ -37,14 +37,17 @@
 	}
 
 	article {
-		cursor: pointer;
-		width: 400px;
-		height: 350px;
-		background-color: var(--c-neutral-800);
+		width: 40vmax;
+		max-width: 350px;
+		aspect-ratio: 3/2.5;
 		border: 1px solid var(--c-neutral-800);
-		border-radius: 0.5em;
-		box-shadow: 0 20px 20px -20px var(--c-neutral-800);
+		border-radius: 0.25em;
+		box-shadow: 0 0 20px -20px var(--c-neutral-800);
 		overflow: hidden;
-		user-select: none;
+		transition: 150ms;
+
+		&:hover {
+			box-shadow: 0 0 50px -20px var(--c-accent-800);
+		}
 	}
 </style>

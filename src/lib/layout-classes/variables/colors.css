@@ -10,12 +10,12 @@
 :root {
   /* USER COLORS */
 
-  /* Accent color - Viva Magenta */
-  --value-accent: hsl(346, 66%, 44%);
-  --h-accent: 346;
-  --s-accent: 66%;
-  --l-accent: 44%;
-  --a-accent: 346, 66%, 44%;
+  /* Accent color - JS Yellow */
+  --value-accent: hsl(52, 84%, 63%);
+  --h-accent: 52;
+  --s-accent: 84%;
+  --l-accent: 63%;
+  --a-accent: var(--h-accent), var(--s-accent), var(--l-accent);
   --text-accent: var(--c-neutral);
 
   /* Alternative color - Plein Air */

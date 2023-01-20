@@ -10,7 +10,7 @@
 {#if room}
 	<main id={room.id} class="col fcenter fill">
 		{#if room.type === 'text'}
-			<h1>{room.content}</h1>
+			<h1 class="text"><b>{room.content}</b></h1>
 		{:else}
 			<Image width="100%" height="100%" src={room.content} alt={room.name} />
 		{/if}
@@ -23,6 +23,7 @@
 		color: var(--c-neutral);
 
 		& h1 {
+			font-size: clamp(30px, 10vw, 20vh);
 			padding: 1em;
 		}
 	}
